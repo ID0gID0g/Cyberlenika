@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	"github.com/joho/godotenv"
 
 	// Предполагаемые импорты ваших сервисов
 	"Cyberlenika/internal/core/services"
@@ -192,6 +194,10 @@ func createArticleButton(data ArticleData, updater func(ArticleData, fyne.Window
 }
 
 func main() {
+	if err := godotenv.Load(".env"); err != nil {
+		log.Fatal("Ошибка загрузки файла .env")
+	}
+
 	a := app.New()
 	w := a.NewWindow("Cyberleninka")
 

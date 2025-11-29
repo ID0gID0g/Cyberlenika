@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/google/generative-ai-go/genai"
 	"google.golang.org/api/option"
@@ -17,7 +18,7 @@ type Narrator struct {
 
 func NewNarrator() *Narrator {
 	return &Narrator{
-		key:   "AIzaSyCL-VCOP2iDmvKqPVOlgeGe65rqtJahyYE",
+		key:   os.Getenv("GEMINI_API_KEY"),
 		model: "gemini-2.5-flash",
 	}
 }
